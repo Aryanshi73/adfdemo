@@ -1,0 +1,19 @@
+{
+	"name": "SourceDataset_ndw",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureBlobStorage_1",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Binary",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": "themes.csv.gz",
+				"container": "bhaicontainer"
+			}
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

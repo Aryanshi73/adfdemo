@@ -1,0 +1,33 @@
+{
+	"name": "blob1",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureBlobStorage1",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": "themes.csv.gz",
+				"container": "aryanshidatacontainer"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"name": "\u001f�\b\u0000��Jf\u0000\u0003�Y�v�\u0011��+�Mf\u0003O�7�;��nk��ݓlr \t�\u0010S�\u0006$�-}n\u0015@�aMN6<�[\u0000\b\u0014�M=\u0017�\\)��V���|\u0014�g5[�z&F�87��ju�M-�Q\".��m��NWse\u0001��x4S�A6D��i��<x��j�B<��\u0006ߥ#K�ԭוZዲ\u0002\u0012���Қ\u001fS�b�~畣P|��\u001b������\u0017��j�\u0017�s�dk",
+				"type": "String"
+			},
+			{
+				"name": "6���|U��\u0003�\u0014�T�Y={m�M�U\"NF)>a~�b�����Z\u001c/\u001d�R���",
+				"type": "String"
+			}
+		]
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

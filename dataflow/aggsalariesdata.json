@@ -1,0 +1,61 @@
+{
+	"name": "aggsalariesdata",
+	"properties": {
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "salariedata",
+						"type": "DatasetReference"
+					},
+					"name": "salariesdataflow"
+				}
+			],
+			"sinks": [
+				{
+					"dataset": {
+						"referenceName": "aggregatedata",
+						"type": "DatasetReference"
+					},
+					"name": "aggdata"
+				}
+			],
+			"transformations": [
+				{
+					"name": "aggregate1"
+				}
+			],
+			"scriptLines": [
+				"source(output(",
+				"          work_year as string,",
+				"          experience_level as string,",
+				"          employment_type as string,",
+				"          job_title as string,",
+				"          salary as string,",
+				"          salary_currency as string,",
+				"          salary_in_usd as string,",
+				"          employee_residence as string,",
+				"          remote_ratio as string,",
+				"          company_location as string,",
+				"          company_size as string",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     ignoreNoFilesFound: false) ~> salariesdataflow",
+				"salariesdataflow aggregate(groupBy(job_title),",
+				"     TotalJobtitles = count(employment_type)) ~> aggregate1",
+				"aggregate1 sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     input(",
+				"          department as string,",
+				"          {dep name} as string",
+				"     ),",
+				"     partitionFileNames:['aggsalariesdata.csv'],",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true,",
+				"     partitionBy('hash', 1)) ~> aggdata"
+			]
+		}
+	}
+}
