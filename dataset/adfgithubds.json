@@ -1,0 +1,18 @@
+{
+	"name": "adfgithubds",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureBlobStorage1",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Binary",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": "casteddataset.csv",
+				"container": "outputdestination"
+			}
+		}
+	}
+}
